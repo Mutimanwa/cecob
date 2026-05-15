@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon.ico" />
+    <script src="assets/js/vendors/darkMode.js"></script>
+    <link href="assets/fonts/feather/feather.css" rel="stylesheet" />
+    <link href="assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/theme.min.css" />
+    <title>CECOB | Contact</title>
+  </head>
+  <body class="bg-white">
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+      <div class="container px-0">
+        <a class="navbar-brand" href="index.html"><img src="assets/images/brand/logo/logo.svg" alt="CECOB" /></a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-default"><span class="icon-bar top-bar mt-0"></span><span class="icon-bar middle-bar"></span><span class="icon-bar bottom-bar"></span></button>
+        <div class="collapse navbar-collapse" id="navbar-default">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">Association</a></li>
+            <li class="nav-item"><a class="nav-link" href="leadership.html">Leadership</a></li>
+            <li class="nav-item"><a class="nav-link" href="events.html">Evenements</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          </ul>
+          <a href="membership.html" class="btn btn-primary">Adhesion</a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="container-fluid">
+        <div class="row min-vh-100">
+          <div class="offset-xl-1 col-xl-5 col-lg-6 col-12">
+            <div class="py-8 me-xl-8 pe-xl-8">
+              <h1 class="display-4 fw-bold">Entrer en contact avec CECOB.</h1>
+              <p class="lead text-dark">Le secretariat, la commission communication et l’equipe d’adhesion peuvent recevoir vos demandes depuis cette page.</p>
+              <div class="mt-8 fs-4">
+                <p><i class="bi bi-telephone text-primary me-2"></i>+257 79 000 000</p>
+                <p><i class="bi bi-envelope-open text-primary me-2"></i>contact@cecob.org</p>
+                <p class="d-flex"><i class="bi bi-geo-alt text-primary me-2"></i>Bujumbura, Burundi - Bureau de coordination etudiante</p>
+              </div>
+              <div class="card mt-6 border-0 bg-light">
+                <div class="card-body">
+                  <h4>Canaux suivis par l’admin</h4>
+                  <p class="mb-2">Messages de contact, reponses, anti-spam et suivi interne sont prevus dans le module `contact_messages`.</p>
+                  <a href="admin/admin-dashboard.html" class="btn btn-outline-primary">Voir l’espace admin</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-lg-flex align-items-center w-lg-50 position-fixed-lg bg-cover bg-light top-0 right-0">
+            <div class="px-4 px-xl-8 mx-xl-8 py-8 py-lg-0 w-100">
+              <form class="row needs-validation" novalidate>
+                <div class="mb-3 col-12 col-md-6">
+                  <label class="form-label" for="fname">Nom complet <span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" id="fname" placeholder="Votre nom" required />
+                </div>
+                <div class="mb-3 col-12 col-md-6">
+                  <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
+                  <input class="form-control" type="email" id="email" placeholder="nom@email.com" required />
+                </div>
+                <div class="mb-3 col-12 col-md-6">
+                  <label class="form-label" for="phone">Telephone <span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" id="phone" placeholder="+257 ..." required />
+                </div>
+                <div class="mb-3 col-12 col-md-6">
+                  <label class="text-dark form-label" for="contactReason">Objet <span class="text-danger">*</span></label>
+                  <select class="form-select" id="contactReason" required>
+                    <option value="">Selectionner</option>
+                    <option>Demande d’adhesion</option>
+                    <option>Evenement</option>
+                    <option>Partenariat</option>
+                    <option>Support administratif</option>
+                  </select>
+                </div>
+                <div class="mb-3 col-12">
+                  <label class="form-label" for="message">Message <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Votre message" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Envoyer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+</html>

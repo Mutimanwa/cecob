@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon.ico" />
+    <script src="assets/js/vendors/darkMode.js"></script>
+    <link href="assets/fonts/feather/feather.css" rel="stylesheet" />
+    <link href="assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet" />
+    <link href="assets/libs/bs-stepper/dist/css/bs-stepper.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/theme.min.css" />
+    <title>CECOB | Adhesion en ligne</title>
+  </head>
+  <body class="bg-white">
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom"><div class="container px-0"><a class="navbar-brand" href="index.html"><img src="assets/images/brand/logo/logo.svg" alt="CECOB" /></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-default"><span class="icon-bar top-bar mt-0"></span><span class="icon-bar middle-bar"></span><span class="icon-bar bottom-bar"></span></button><div class="collapse navbar-collapse" id="navbar-default"><ul class="navbar-nav mx-auto"><li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li><li class="nav-item"><a class="nav-link" href="about.html">Association</a></li><li class="nav-item"><a class="nav-link" href="events.html">Evenements</a></li><li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li></ul><a href="admin/sign-in.html" class="btn btn-outline-dark">Connexion admin</a></div></div></nav>
+    <main>
+      <section class="py-8 bg-light"><div class="container"><div class="row justify-content-center"><div class="col-lg-8 text-center"><span class="text-uppercase text-primary fw-semibold ls-md">Adhesion en ligne</span><h1 class="display-4 fw-bold mt-3">Soumettre une demande membre CECOB</h1><p class="lead mb-0">Le formulaire suit les champs et le workflow de validation definis dans `todo.md`.</p></div></div></div></section>
+      <section class="py-8"><div class="container"><div class="row justify-content-center"><div class="col-lg-10">
+        <div class="card"><div class="card-body p-4 p-lg-5">
+          <div class="row g-4">
+            <div class="col-md-6"><label class="form-label">Nom complet</label><input class="form-control" type="text" placeholder="Nom et prenom" /></div>
+            <div class="col-md-6"><label class="form-label">Genre</label><select class="form-select"><option>Selectionner</option><option>Masculin</option><option>Feminin</option></select></div>
+            <div class="col-md-6"><label class="form-label">Date de naissance</label><input class="form-control" type="date" /></div>
+            <div class="col-md-6"><label class="form-label">Nationalite</label><input class="form-control" type="text" value="Congolaise" /></div>
+            <div class="col-md-6"><label class="form-label">Universite</label><input class="form-control" type="text" placeholder="Nom de l’universite" /></div>
+            <div class="col-md-6"><label class="form-label">Faculte / Departement</label><input class="form-control" type="text" placeholder="Faculte et departement" /></div>
+            <div class="col-md-6"><label class="form-label">Niveau academique</label><input class="form-control" type="text" placeholder="L1, L2, Master..." /></div>
+            <div class="col-md-6"><label class="form-label">Numero etudiant</label><input class="form-control" type="text" placeholder="Matricule" /></div>
+            <div class="col-md-6"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email" /></div>
+            <div class="col-md-6"><label class="form-label">Telephone</label><input class="form-control" type="text" placeholder="+257..." /></div>
+            <div class="col-md-6"><label class="form-label">Mot de passe</label><input class="form-control" type="password" placeholder="Mot de passe" /></div>
+            <div class="col-md-6"><label class="form-label">Photo de profil</label><input class="form-control" type="file" /></div>
+            <div class="col-12"><label class="form-label">Pieces justificatives</label><textarea class="form-control" rows="4" placeholder="Carte etudiante, certificat ou autres documents"></textarea></div>
+            <div class="col-12 d-flex flex-wrap gap-3"><button class="btn btn-primary">Soumettre la demande</button><a href="admin/admin-membership-requests.html" class="btn btn-outline-dark">Voir la validation admin</a></div>
+          </div>
+        </div></div>
+      </div></div></div></section>
+    </main>
+    <script src="assets/libs/@popperjs/core/dist/umd/popper.min.js"></script><script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script><script src="assets/libs/simplebar/dist/simplebar.min.js"></script><script src="assets/js/theme.min.js"></script>
+  </body>
+</html>
