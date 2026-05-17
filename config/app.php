@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 define('APP_NAME', 'CECOB');
-define('APP_URL', 'http://localhost/cecob');
+define('APP_URL', 'http://localhost/ceco');
 define('APP_ROOT', dirname(__DIR__));
 
 date_default_timezone_set('Africa/Tripoli');

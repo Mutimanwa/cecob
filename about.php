@@ -36,52 +36,6 @@ require_once __DIR__ . '/includes/public_header.php';
             </div>
         </div>
 
-        <!-- gallery -->
-        <div class="gallery mb-8">
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--1 mb-0">
-                <img src="assets/images/about/geeksui-img-1.jpg"
-                    alt="Activités CECOB"
-                    class="gallery__img rounded-3">
-            </figure>
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--2 mb-0">
-                <img src="assets/images/about/geeksui-img-2.jpg"
-                    alt="Étudiants CECOB"
-                    class="gallery__img rounded-3">
-            </figure>
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--3 mb-0">
-                <img src="assets/images/about/geeksui-img-3.jpg"
-                    alt="Communauté étudiante"
-                    class="gallery__img rounded-3">
-            </figure>
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--4 mb-0">
-                <img src="assets/images/about/geeksui-img-4.jpg"
-                    alt="Événements étudiants"
-                    class="gallery__img rounded-3">
-            </figure>
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--5 mb-0">
-                <img src="assets/images/about/geeksui-img-5.jpg"
-                    alt="Leadership étudiant"
-                    class="gallery__img rounded-3">
-            </figure>
-
-            <!-- gallery-item -->
-            <figure class="gallery__item gallery__item--6 mb-0">
-                <img src="assets/images/about/geeksui-img-6.jpg"
-                    alt="Association CECOB"
-                    class="gallery__img rounded-3">
-            </figure>
-
-        </div>
 
         <div class="row">
 

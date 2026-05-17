@@ -6,7 +6,7 @@ $posts = fetch_posts_page();
 require_once __DIR__ . '/includes/public_header.php';
 ?>
 <main>
-    <section class="py-7 bg-light">
+    <section class="py-7">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10 col-12 text-center">

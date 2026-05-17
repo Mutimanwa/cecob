@@ -79,11 +79,11 @@ $flash = get_flash();
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'home' ? 'active' : ''; ?>"
               href="<?= e(app_url('index.php')); ?>">Accueil</a></li>
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'about' ? 'active' : ''; ?>"
-              href="<?= e(app_url('about.php')); ?>">Détails importants</a></li>
+              href="<?= e(app_url('about.php')); ?>">A propos</a></li>
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'events' ? 'active' : ''; ?>"
               href="<?= e(app_url('events.php')); ?>">Evenements</a></li>
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'blog' ? 'active' : ''; ?>"
-              href="<?= e(app_url('blog.php')); ?>">Actualites</a></li>
+              href="<?= e(app_url('blog.php')); ?>">Blog</a></li>
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'gallery' ? 'active' : ''; ?>"
               href="<?= e(app_url('gallery.php')); ?>">Galerie</a></li>
           <li class="nav-item"><a class="nav-link <?= $currentPage === 'contact' ? 'active' : ''; ?>"
