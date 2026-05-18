@@ -14,6 +14,7 @@ $flash = get_flash();
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/js/vendors/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
+  <link rel="stylesheet" href="<?= e(app_url('assets/js/vendors/bs-stepper/dist/css/bs-stepper.min.css')); ?>">
   <link rel="stylesheet" href="<?= e(app_url('assets/css/theme.min.css')); ?>" />
   <title><?= e($pageTitle); ?></title>
 </head>

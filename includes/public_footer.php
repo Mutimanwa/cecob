@@ -130,6 +130,8 @@
 <script src="<?= e(app_url('assets/js/vendors/@popperjs/core/dist/umd/popper.min.js')); ?>"></script>
 <script src="<?= e(app_url('assets/js/vendors/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
 <script src="<?= e(app_url('assets/js/vendors/simplebar/dist/simplebar.min.js')); ?>"></script>
+<script src="<?= e(app_url('assets/js/vendors/bs-stepper/dist/js/bs-stepper.min.js')); ?>"></script>
+<script src="<?= e(app_url('assets/js/vendors/beStepper.js')); ?>"></script>
 <script src="<?= e(app_url('assets/js/theme.min.js')); ?>"></script>
 </body>
 

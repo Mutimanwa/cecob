@@ -151,15 +151,24 @@ function fetch_latest_posts(int $limit = 3): array
     return $items;
 }
 
-function fetch_upcoming_events(int $limit = 3): array
+function fetch_upcoming_events(int $limit = 3, ?string $category = null): array
 {
-    if (! db()) {
+    if (!db()) {
         return [];
     }
 
-    $stmt = db()->prepare('SELECT id, title, description, starts_at, location, capacity, image_path FROM events WHERE starts_at >= CURDATE() ORDER BY starts_at ASC LIMIT ?');
-    $stmt->bindValue(1, $limit, PDO::PARAM_INT);
-    $stmt->execute();
+    $query = "SELECT id, title, description, starts_at, location, capacity, image_path, category FROM events WHERE starts_at >= CURDATE()";
+    $params = [];
+
+    if ($category) {
+        $query .= " AND category = ?";
+        $params[] = $category;
+    }
+
+    $query .= " ORDER BY starts_at ASC LIMIT " . (int)$limit;
+    
+    $stmt = db()->prepare($query);
+    $stmt->execute($params);
     $items = fetch_all_assoc($stmt);
 
     return $items;
@@ -207,13 +216,24 @@ function fetch_contact_messages(): array
     return $stmt->fetchAll();
 }
 
-function fetch_posts_page(): array
+function fetch_posts_page(?string $category = null): array
 {
-    if (! db()) {
+    if (!db()) {
         return [];
     }
 
-    $stmt = db()->query("SELECT title, excerpt, category, image_path, slug, published_at FROM posts WHERE status = 'published' ORDER BY published_at DESC");
+    $query = "SELECT title, excerpt, category, image_path, slug, published_at FROM posts WHERE status = 'published'";
+    $params = [];
+
+    if ($category) {
+        $query .= " AND category = ?";
+        $params[] = $category;
+    }
+
+    $query .= " ORDER BY published_at DESC";
+
+    $stmt = db()->prepare($query);
+    $stmt->execute($params);
 
     return $stmt->fetchAll();
 }
