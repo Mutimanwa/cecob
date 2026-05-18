@@ -160,7 +160,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
   </form>
 </section>
 
-<script>
+<!-- <script>
   function prepareFormSubmission() {
     // Sync Quill content to hidden input
     const editor = document.querySelector('.ql-editor');
@@ -175,6 +175,6 @@ require_once __DIR__ . '/../includes/admin_header.php';
     bodyInput.value = editor.innerHTML;
     return true;
   }
-</script>
+</script> -->
 
 <?php require_once __DIR__ . '/../includes/admin_footer.php'; ?>

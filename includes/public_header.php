@@ -12,8 +12,8 @@ $flash = get_flash();
   <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/favicon/favicon.ico')); ?>" />
   <script src="<?= e(app_url('assets/js/vendors/darkMode.js')); ?>"></script>
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
-  <link href="<?= e(app_url('assets/libs/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
-  <link href="<?= e(app_url('assets/libs/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
+  <link href="<?= e(app_url('assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
+  <link href="<?= e(app_url('assets/js/vendors/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
   <link rel="stylesheet" href="<?= e(app_url('assets/css/theme.min.css')); ?>" />
   <title><?= e($pageTitle); ?></title>
 </head>

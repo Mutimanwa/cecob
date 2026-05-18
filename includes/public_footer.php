@@ -62,35 +62,35 @@
                     </ul>
                 </div>
             </div>
-<div class="col-lg-3 col-md-12">
-    <!-- contact info -->
-    <div class="mb-4">
-        <h3 class="fw-bold mb-3">Contact</h3>
+            <div class="col-lg-3 col-md-12">
+                <!-- contact info -->
+                <div class="mb-4">
+                    <h3 class="fw-bold mb-3">Contact</h3>
 
-        <p>
-            Bujumbura, Burundi
-        </p>
+                    <p>
+                        Bujumbura, Burundi
+                    </p>
 
-        <p class="mb-1">
-            Email :
-            <a href="mailto:contact@cecob.org">
-                contact@cecob.org
-            </a>
-        </p>
+                    <p class="mb-1">
+                        Email :
+                        <a href="mailto:contact@cecob.org">
+                            contact@cecob.org
+                        </a>
+                    </p>
 
-        <p class="mb-1">
-            Téléphone :
-            <span class="text-dark fw-semibold">
-                +257 00 00 00 00
-            </span>
-        </p>
+                    <p class="mb-1">
+                        Téléphone :
+                        <span class="text-dark fw-semibold">
+                            +257 00 00 00 00
+                        </span>
+                    </p>
 
-        <p>
-            Suivez-nous pour rester informé des activités,
-            événements et annonces de la communauté CECOB.
-        </p>
-    </div>
-</div>
+                    <p>
+                        Suivez-nous pour rester informé des activités,
+                        événements et annonces de la communauté CECOB.
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="row align-items-center g-0 border-top py-2 mt-6">
             <!-- Desc -->
@@ -127,9 +127,9 @@
     </svg>
 </div>
 
-<script src="<?= e(app_url('assets/libs/@popperjs/core/dist/umd/popper.min.js')); ?>"></script>
-<script src="<?= e(app_url('assets/libs/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
-<script src="<?= e(app_url('assets/libs/simplebar/dist/simplebar.min.js')); ?>"></script>
+<script src="<?= e(app_url('assets/js/vendors/@popperjs/core/dist/umd/popper.min.js')); ?>"></script>
+<script src="<?= e(app_url('assets/js/vendors/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
+<script src="<?= e(app_url('assets/js/vendors/simplebar/dist/simplebar.min.js')); ?>"></script>
 <script src="<?= e(app_url('assets/js/theme.min.js')); ?>"></script>
 </body>
 

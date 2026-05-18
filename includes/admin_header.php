@@ -13,10 +13,10 @@ $user = current_user();
   <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/favicon/favicon.ico')); ?>" />
   <script src="<?= e(app_url('assets/js/vendors/darkMode.js')); ?>"></script>
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
-  <link href="<?= e(app_url('assets/libs/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
-  <link href="<?= e(app_url('assets/libs/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
-  <link rel="stylesheet" href="<?= e(app_url('assets/libs/flatpickr/dist/flatpickr.min.css')); ?>" />
-  <link rel="stylesheet" href="<?= e(app_url('assets/libs/quill/dist/quill.snow.css')); ?>" />
+  <link href="<?= e(app_url('assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
+  <link href="<?= e(app_url('assets/js/vendors/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
+  <link rel="stylesheet" href="<?= e(app_url('assets/js/vendors/flatpickr/dist/flatpickr.min.css')); ?>" />
+  <link rel="stylesheet" href="<?= e(app_url('assets/js/vendors/quill/dist/quill.snow.css')); ?>" />
   <link rel="stylesheet" href="<?= e(app_url('assets/css/theme.min.css')); ?>" />
   <title><?= e($pageTitle); ?></title>
 </head>
@@ -58,7 +58,7 @@ $user = current_user();
     <main id="page-content">
       <div class="header">
         <!--  -->
-        <nav class="navbar-default navbar navbar-expand-lg">
+        <nav class="navbar-default navbar navbar-expand-lg ">
           <a id="nav-toggle" href="#">
             <i class="fe fe-menu"></i>
           </a>
