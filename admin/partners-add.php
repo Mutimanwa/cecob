@@ -84,11 +84,16 @@ require_once __DIR__ . '/../includes/admin_header.php';
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Logo</label>
-                            <?php if ($partner && $partner['logo_path']): ?>
-                                <div class="mb-2"><img src="<?= e(app_url($partner['logo_path'])); ?>" style="max-height: 100px;"></div>
-                            <?php endif; ?>
-                            <input type="file" name="logo" class="form-control">
+                            <label class="form-label">Logo du partenaire</label>
+                            <div class="custom-file-container" data-upload-id="courseImage">
+                                <label>Choisir un logo <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input type="file" name="logo" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview" style="<?= $partner && $partner['logo_path'] ? 'background-image: url(' . e(app_url($partner['logo_path'])) . ');' : ''; ?>"></div>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary"><?= $id ? 'Mettre à jour' : 'Ajouter'; ?></button>

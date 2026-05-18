@@ -15,6 +15,8 @@ $user = current_user();
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/libs/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/libs/simplebar/dist/simplebar.min.css')); ?>" rel="stylesheet" />
+  <link rel="stylesheet" href="<?= e(app_url('assets/libs/flatpickr/dist/flatpickr.min.css')); ?>" />
+  <link rel="stylesheet" href="<?= e(app_url('assets/libs/quill/dist/quill.snow.css')); ?>" />
   <link rel="stylesheet" href="<?= e(app_url('assets/css/theme.min.css')); ?>" />
   <title><?= e($pageTitle); ?></title>
 </head>
@@ -32,19 +34,19 @@ $user = current_user();
           </li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'posts' ? 'active' : ''; ?>" href="<?= e(app_url('admin/posts.php')); ?>"><i class="nav-icon fe fe-book-open me-2"></i>Articles (Blog)</a></li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'events' ? 'active' : ''; ?>" href="<?= e(app_url('admin/events.php')); ?>"><i class="nav-icon fe fe-calendar me-2"></i>Evenements</a></li>
-             <li class="nav-item nav-divider my-2"></li>
+          <li class="nav-item nav-divider my-2"></li>
           <li class="nav-item">
             <div class="navbar-heading">Membres</div>
           </li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'members' ? 'active' : ''; ?>" href="<?= e(app_url('admin/members.php')); ?>"><i class="nav-icon fe fe-users me-2"></i>Membres</a></li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'adhesions' ? 'active' : ''; ?>" href="<?= e(app_url('admin/membership-requests.php')); ?>"><i class="nav-icon fe fe-user-plus me-2"></i>Adhesions</a></li>
-             <li class="nav-item nav-divider my-2"></li>
+          <li class="nav-item nav-divider my-2"></li>
           <li class="nav-item">
             <div class="navbar-heading">Leadarship</div>
           </li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'team' ? 'active' : ''; ?>" href="<?= e(app_url('admin/team.php')); ?>"><i class="nav-icon fe fe-briefcase me-2"></i>Equipe</a></li>
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'partners' ? 'active' : ''; ?>" href="<?= e(app_url('admin/partners.php')); ?>"><i class="nav-icon fe fe-shield me-2"></i>Partenaires</a></li>
-            <li class="nav-item nav-divider my-2"></li>
+          <li class="nav-item nav-divider my-2"></li>
           <li class="nav-item">
             <div class="navbar-heading">Messagerie</div>
           </li>

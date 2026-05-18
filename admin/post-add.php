@@ -74,10 +74,11 @@ require_once __DIR__ . '/../includes/admin_header.php';
       </div>
     </div>
   </div>
-  <form action="" method="POST" enctype="multipart/form-data" id="postForm">
+  <form action="" method="POST" enctype="multipart/form-data" id="postForm" onsubmit="return prepareFormSubmission();">
     <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
     <input type="hidden" name="body" id="postBodyInput">
-    <input type="hidden" name="status" id="postStatusInput" value="<?= e($post['status'] ?? 'draft'); ?>">
+    <input type="hidden" name="status" id="postStatusInput" value="<?= e($post['status'] ?? 'published'); ?>">
+
     <div class="row gy-4">
       <div class="col-xl-9 col-lg-8 col-md-12 col-12">
         <div class="card border-0">
@@ -87,56 +88,71 @@ require_once __DIR__ . '/../includes/admin_header.php';
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Image de couverture</label>
-              <?php if ($post && $post['image_path']): ?>
-                <div class="mb-2">
-                  <img src="<?= e(app_url($post['image_path'])); ?>" alt="" class="img-fluid rounded" style="max-height: 200px;">
-                </div>
-              <?php endif; ?>
-              <input type="file" name="image" class="form-control">
-            </div>
-            <div class="row">
-              <div class="mb-3 col-md-9">
-                <label for="postTitle" class="form-label">Titre</label>
-                <input type="text" name="title" id="postTitle" class="form-control" value="<?= e($post['title'] ?? ''); ?>" required />
+              <div class="custom-file-container" data-upload-id="courseImage">
+                <label>Choisir une image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
+                <label class="custom-file-container__custom-file">
+                  <input type="file" name="image" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+                  <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview" style="<?= $post && $post['image_path'] ? 'background-image: url(' . e(app_url($post['image_path'])) . ');' : ''; ?>"></div>
               </div>
-              <div class="mb-3 col-md-9">
+            </div>
+
+            <div class="row">
+              <div class="mb-3 col-md-12">
+                <label for="postTitle" class="form-label">Titre <span class="text-danger">*</span></label>
+                <input type="text" name="title" id="postTitle" class="form-control" value="<?= e($post['title'] ?? ''); ?>" placeholder="Titre de l'article" required />
+              </div>
+              <div class="mb-3 col-md-12">
                 <label for="slug" class="form-label">Slug (URL)</label>
                 <input type="text" name="slug" id="slug" class="form-control" value="<?= e($post['slug'] ?? ''); ?>" placeholder="votre-titre-article" />
-                <small class="text-muted">Laissez vide pour generer automatiquement.</small>
+                <small class="text-muted">Laissez vide pour générer automatiquement à partir du titre.</small>
               </div>
-              <div class="mb-3 col-md-9">
-                <label for="Excerpt" class="form-label">Extrait (Resume)</label>
-                <textarea rows="3" name="excerpt" id="Excerpt" class="form-control"><?= e($post['excerpt'] ?? ''); ?></textarea>
+              <div class="mb-3 col-md-12">
+                <label for="Excerpt" class="form-label">Extrait / Résumé <span class="text-danger">*</span></label>
+                <textarea rows="3" name="excerpt" id="Excerpt" class="form-control" placeholder="Bref résumé de l'article pour les listes" required><?= e($post['excerpt'] ?? ''); ?></textarea>
               </div>
-              <div class="mb-3 col-md-9">
-                <label class="form-label" for="category">Categorie</label>
+              <div class="mb-3 col-md-12">
+                <label class="form-label" for="category">Catégorie <span class="text-danger">*</span></label>
                 <select class="form-select" name="category" id="category" required>
-                  <option value="Association" <?= ($post['category'] ?? '') === 'Association' ? 'selected' : ''; ?>>Association</option>
-                  <option value="Evenement" <?= ($post['category'] ?? '') === 'Evenement' ? 'selected' : ''; ?>>Evenement</option>
+                  <option value="" disabled <?= !isset($post['category']) ? 'selected' : ''; ?>>Sélectionnez une catégorie</option>
+                  <option value="Vie associative" <?= ($post['category'] ?? '') === 'Vie associative' ? 'selected' : ''; ?>>Vie associative</option>
+                  <option value="Communiqué" <?= ($post['category'] ?? '') === 'Communiqué' ? 'selected' : ''; ?>>Communiqué</option>
+                  <option value="Événement" <?= ($post['category'] ?? '') === 'Événement' ? 'selected' : ''; ?>>Événement</option>
                   <option value="Workshop" <?= ($post['category'] ?? '') === 'Workshop' ? 'selected' : ''; ?>>Workshop</option>
                   <option value="Marketing" <?= ($post['category'] ?? '') === 'Marketing' ? 'selected' : ''; ?>>Marketing</option>
                 </select>
               </div>
             </div>
+
             <div class="mt-2 mb-4">
-              <label class="form-label">Contenu de l'article</label>
+              <label class="form-label">Corps de l'article <span class="text-danger">*</span></label>
               <div id="editor" style="height: 400px;"><?= $post['body'] ?? ''; ?></div>
             </div>
+
             <div class="d-flex gap-2">
-              <button type="submit" onclick="submitPost('published')" class="btn btn-primary">Publier</button>
-              <button type="submit" onclick="submitPost('draft')" class="btn btn-outline-secondary">Enregistrer en Brouillon</button>
+              <button type="submit" onclick="document.getElementById('postStatusInput').value = 'published'" class="btn btn-primary">Publier</button>
+              <button type="submit" onclick="document.getElementById('postStatusInput').value = 'draft'" class="btn btn-outline-secondary">Enregistrer en Brouillon</button>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-xl-3 col-lg-4 col-md-12 col-12">
-        <div class="card">
+        <div class="card mb-4">
           <div class="card-header">
-            <h4>Infos</h4>
+            <h4 class="mb-0">Informations</h4>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Statut: <strong><?= ucfirst($post['status'] ?? 'Nouveau'); ?></strong></li>
-            <li class="list-group-item">Derniere Maj: <?= isset($post['updated_at']) ? date('d/m/Y H:i', strtotime($post['updated_at'])) : 'Jamais'; ?></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Statut: <span class="badge bg-<?= ($post['status'] ?? '') === 'published' ? 'success' : 'warning'; ?>"><?= ucfirst($post['status'] ?? 'Nouveau'); ?></span>
+            </li>
+            <?php if ($post): ?>
+              <li class="list-group-item">
+                <small class="text-muted">Créé le : <?= date('d/m/Y H:i', strtotime($post['published_at'])); ?></small>
+              </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
@@ -144,31 +160,20 @@ require_once __DIR__ . '/../includes/admin_header.php';
   </form>
 </section>
 
-<!-- Quill JS Integration -->
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
-  var quill = new Quill('#editor', {
-    theme: 'snow',
-    modules: {
-      toolbar: [
-        [{
-          'header': [1, 2, 3, false]
-        }],
-        ['bold', 'italic', 'underline', 'strike'],
-        ['link', 'blockquote', 'code-block', 'image'],
-        [{
-          'list': 'ordered'
-        }, {
-          'list': 'bullet'
-        }]
-      ]
-    }
-  });
+  function prepareFormSubmission() {
+    // Sync Quill content to hidden input
+    const editor = document.querySelector('.ql-editor');
+    const bodyInput = document.getElementById('postBodyInput');
 
-  function submitPost(status) {
-    document.getElementById('postBodyInput').value = quill.root.innerHTML;
-    document.getElementById('postStatusInput').value = status;
+    // Check if it's empty
+    if (editor.innerText.trim() === '' && !editor.querySelector('img')) {
+      alert('Le corps de l\'article ne peut pas être vide.');
+      return false;
+    }
+
+    bodyInput.value = editor.innerHTML;
+    return true;
   }
 </script>
 

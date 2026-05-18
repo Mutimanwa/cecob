@@ -82,18 +82,18 @@ require_once __DIR__ . '/../includes/admin_header.php';
 
             <div class="mb-3 col-12">
               <label class="form-label">Titre <span class="text-danger">*</span></label>
-              <input type="text" name="title" class="form-control" value="<?= e($event['title'] ?? ''); ?>" placeholder="Titre de l'evenement" required>
+              <input type="text" name="title" class="form-control" value="<?= e($event['title'] ?? ''); ?>" placeholder="Titre de l'événement" required>
             </div>
 
             <div class="mb-3 col-12">
-              <label class="form-label">Description</label>
-              <textarea name="description" class="form-control" rows="3"><?= e($event['description'] ?? ''); ?></textarea>
+              <label class="form-label">Description <span class="text-danger">*</span></label>
+              <textarea name="description" class="form-control" rows="3" placeholder="Brève description..." required><?= e($event['description'] ?? ''); ?></textarea>
             </div>
 
             <div class="mb-3 col-md-6 col-12">
               <label class="form-label">Date et Heure <span class="text-danger">*</span></label>
               <div class="input-group">
-                <input class="form-control flatpickr" type="text" name="starts_at" value="<?= e($event['starts_at'] ?? ''); ?>" placeholder="Selectionnez" required>
+                <input class="form-control flatpickr" type="text" name="starts_at" value="<?= e($event['starts_at'] ?? ''); ?>" placeholder="Sélectionnez..." required>
                 <span class="input-group-text"><i class="fe fe-calendar"></i></span>
               </div>
             </div>
@@ -104,18 +104,21 @@ require_once __DIR__ . '/../includes/admin_header.php';
             </div>
 
             <div class="mb-3 col-md-6 col-12">
-              <label class="form-label">Capacite (0 pour illimite)</label>
+              <label class="form-label">Capacité (0 pour illimité)</label>
               <input type="number" name="capacity" class="form-control" value="<?= e($event['capacity'] ?? 0); ?>">
             </div>
 
             <div class="col-12 mb-4">
               <label class="form-label">Image de couverture</label>
-              <?php if ($event && $event['image_path']): ?>
-                <div class="mb-2">
-                  <img src="<?= e(app_url($event['image_path'])); ?>" alt="" class="img-fluid rounded" style="max-height: 150px;">
-                </div>
-              <?php endif; ?>
-              <input class="form-control" type="file" name="image">
+              <div class="custom-file-container" data-upload-id="courseImage">
+                <label>Choisir une image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
+                <label class="custom-file-container__custom-file">
+                  <input type="file" name="image" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+                  <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview" style="<?= $event && $event['image_path'] ? 'background-image: url(' . e(app_url($event['image_path'])) . ');' : ''; ?>"></div>
+              </div>
             </div>
 
             <div class="col-12">
@@ -128,15 +131,5 @@ require_once __DIR__ . '/../includes/admin_header.php';
     </div>
   </div>
 </section>
-
-<!-- Flatpickr Integration -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-  flatpickr(".flatpickr", {
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-  });
-</script>
 
 <?php require_once __DIR__ . '/../includes/admin_footer.php'; ?>

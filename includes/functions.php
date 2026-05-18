@@ -271,6 +271,8 @@ function fetch_all_team(): array
 function save_team_member(array $data): bool
 {
     if (! db()) return false;
+    if (empty($data['full_name']) || empty($data['role_title'])) return false;
+
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE team_members SET full_name = ?, role_title = ?, bio = ?, avatar_path = ?, mandate_start = ?, mandate_end = ?, display_order = ?, is_active = ? WHERE id = ?');
         return $stmt->execute([$data['full_name'], $data['role_title'], $data['bio'], $data['avatar_path'], $data['mandate_start'], $data['mandate_end'], $data['display_order'], $data['is_active'], $data['id']]);
@@ -290,6 +292,8 @@ function fetch_all_partners(): array
 function save_partner(array $data): bool
 {
     if (! db()) return false;
+    if (empty($data['name'])) return false;
+
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE partners SET name = ?, description = ?, logo_path = ?, website_url = ? WHERE id = ?');
         return $stmt->execute([$data['name'], $data['description'], $data['logo_path'], $data['website_url'], $data['id']]);
@@ -302,6 +306,8 @@ function save_partner(array $data): bool
 function save_post(array $data): bool
 {
     if (! db()) return false;
+    if (empty($data['title']) || empty($data['body']) || empty($data['excerpt']) || empty($data['category'])) return false;
+
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE posts SET title = ?, slug = ?, category = ?, excerpt = ?, body = ?, image_path = ?, status = ? WHERE id = ?');
         return $stmt->execute([$data['title'], $data['slug'], $data['category'], $data['excerpt'], $data['body'], $data['image_path'], $data['status'], $data['id']]);
@@ -313,6 +319,8 @@ function save_post(array $data): bool
 function save_event(array $data): bool
 {
     if (! db()) return false;
+    if (empty($data['title']) || empty($data['starts_at']) || empty($data['location'])) return false;
+
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE events SET title = ?, description = ?, starts_at = ?, location = ?, capacity = ?, image_path = ? WHERE id = ?');
         return $stmt->execute([$data['title'], $data['description'], $data['starts_at'], $data['location'], $data['capacity'], $data['image_path'], $data['id']]);

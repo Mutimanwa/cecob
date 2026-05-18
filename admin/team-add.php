@@ -108,11 +108,16 @@ require_once __DIR__ . '/../includes/admin_header.php';
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Avatar</label>
-                            <?php if ($member && $member['avatar_path']): ?>
-                                <div class="mb-2"><img src="<?= e(app_url($member['avatar_path'])); ?>" class="rounded-circle avatar-md"></div>
-                            <?php endif; ?>
-                            <input type="file" name="avatar" class="form-control">
+                            <label class="form-label">Avatar / Photo</label>
+                            <div class="custom-file-container" data-upload-id="courseImage">
+                                <label>Choisir une photo <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input type="file" name="avatar" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview" style="<?= $member && $member['avatar_path'] ? 'background-image: url(' . e(app_url($member['avatar_path'])) . ');' : ''; ?>"></div>
+                            </div>
                         </div>
 
                         <div class="mb-3 form-check">
