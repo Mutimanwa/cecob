@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $imagePath = $event['image_path'] ?? null;
 
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $uploaded = upload_file($_FILES['image'], 'assets/images/events');
+    $uploaded = upload_file($_FILES['image'], 'uploads/events');
     if ($uploaded) {
       $imagePath = $uploaded;
     }

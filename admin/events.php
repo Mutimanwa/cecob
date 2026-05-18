@@ -61,7 +61,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
                 <tr>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img src="<?= e(app_url($e['image_path'] ?? 'assets/images/placeholder.jpg')); ?>" alt="" class="rounded img-4by3-lg" style="width: 100px; height: 75px; object-fit: cover;" />
+                      <img src="<?= e(app_url($e['image_path'] ?? 'uploads/blog/blogpost-1.jpg')); ?>" alt="" class="rounded img-4by3-lg" style="width: 100px; height: 75px; object-fit: cover;" />
                       <div class="ms-3">
                         <h5 class="mb-0">
                           <a href="event-add.php?id=<?= $e['id']; ?>" class="text-inherit"><?= e($e['title']); ?></a>

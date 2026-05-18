@@ -55,7 +55,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="<?= e(app_url($p['logo_path'] ?: 'assets/images/placeholder.jpg')); ?>" alt="" class="img-4by3-sm me-3" />
+                                            <img src="<?= e(app_url($p['logo_path'] ?: 'uploads/blog/blogpost-1.jpg')); ?>" alt="" class="img-4by3-sm me-3" />
                                             <h5 class="mb-0"><?= e($p['name']); ?></h5>
                                         </div>
                                     </td>

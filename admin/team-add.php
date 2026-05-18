@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $avatar_path = $member['avatar_path'] ?? null;
 
     if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-        $uploaded = upload_file($_FILES['avatar'], 'assets/images/team');
+        $uploaded = upload_file($_FILES['avatar'], 'uploads/team');
         if ($uploaded) {
             $avatar_path = $uploaded;
         }

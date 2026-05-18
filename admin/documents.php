@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $visibility = $_POST['visibility'] ?? 'public';
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $path = upload_file($_FILES['file'], 'assets/docs');
+        $path = upload_file($_FILES['file'], 'uploads/documents');
         if ($path) {
             $data = [
                 'title' => $title,

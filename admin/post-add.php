@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $imagePath = $post['image_path'] ?? null;
 
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $uploaded = upload_file($_FILES['image'], 'assets/images/blog');
+    $uploaded = upload_file($_FILES['image'], 'uploads/blog');
     if ($uploaded) {
       $imagePath = $uploaded;
     }

@@ -69,7 +69,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
                 <tr>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img src="<?= e(app_url($p['image_path'] ?? 'assets/images/blog/blogpost-placeholder.jpg')); ?>" alt="" class="rounded img-4by3-lg" style="width: 100px; height: 75px; object-fit: cover;" />
+                      <img src="<?= e(app_url($p['image_path'] ?? 'uploads/blog/blogpost-1.jpg')); ?>" alt="" class="rounded img-4by3-lg" style="width: 100px; height: 75px; object-fit: cover;" />
                       <div class="ms-3">
                         <h5 class="mb-0">
                           <a href="post-add.php?id=<?= $p['id']; ?>" class="text-inherit"><?= e($p['title']); ?></a>
@@ -94,7 +94,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
                           <i class="fe fe-edit dropdown-item-icon"></i> Modifier
                         </a>
                         <a class="dropdown-item" href="?action=toggle&id=<?= $p['id']; ?>&status=<?= $p['status'] === 'published' ? 'draft' : 'published'; ?>">
-                          <i class="fe fe-<?= $p['status'] === 'published' ? 'toggle-left' : 'toggle-right'; ?> dropdown-item-icon"></i> 
+                          <i class="fe fe-<?= $p['status'] === 'published' ? 'toggle-left' : 'toggle-right'; ?> dropdown-item-icon"></i>
                           <?= $p['status'] === 'published' ? 'Passer en brouillon' : 'Publier'; ?>
                         </a>
                         <a class="dropdown-item text-danger" href="?action=delete&id=<?= $p['id']; ?>" onclick="return confirm('Supprimer cet article ?')">

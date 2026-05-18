@@ -57,7 +57,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="<?= e(app_url($m['avatar_path'] ?: 'assets/images/avatar/avatar-1.jpg')); ?>" alt="" class="rounded-circle avatar-sm me-3" />
+                                            <img src="<?= e(app_url($m['avatar_path'] ?: 'uploads/team/avatar-1.jpg')); ?>" alt="" class="rounded-circle avatar-sm me-3" />
                                             <h5 class="mb-0"><?= e($m['full_name']); ?></h5>
                                         </div>
                                     </td>

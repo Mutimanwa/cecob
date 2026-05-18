@@ -497,3 +497,17 @@ function delete_record(string $table, int $id): bool
     if (! in_array($table, $allowed, true) || ! db()) return false;
     return db()->prepare("DELETE FROM {$table} WHERE id = ?")->execute([$id]);
 }
+
+function fetch_recent_records(string $table, int $limit = 5): array
+{
+    $allowed = ['posts', 'events', 'adhesion_requests', 'payments', 'contact_messages'];
+    if (! in_array($table, $allowed, true) || ! db()) return [];
+
+    $orderBy = 'created_at DESC';
+    if ($table === 'events') $orderBy = 'starts_at DESC';
+    if ($table === 'posts') $orderBy = 'published_at DESC';
+
+    $stmt = db()->prepare("SELECT * FROM {$table} ORDER BY {$orderBy} LIMIT ?");
+    $stmt->execute([$limit]);
+    return $stmt->fetchAll();
+}

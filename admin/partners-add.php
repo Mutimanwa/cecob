@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $logo_path = $partner['logo_path'] ?? null;
 
     if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
-        $uploaded = upload_file($_FILES['logo'], 'assets/images/partners');
+        $uploaded = upload_file($_FILES['logo'], 'uploads/partners');
         if ($uploaded) {
             $logo_path = $uploaded;
         }

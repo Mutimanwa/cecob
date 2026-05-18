@@ -22,7 +22,7 @@ require_once __DIR__ . '/includes/public_header.php';
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100 shadow-sm"><a
                                 href="<?= e(app_url('article.php?slug=' . urlencode($post['slug']))); ?>"><img
-                                    src="<?= e($post['image_path'] ?: 'assets/images/blog/blogpost-1.jpg'); ?>"
+                                    src="<?= e($post['image_path'] ?: 'uploads/blog/blogpost-1.jpg'); ?>"
                                     class="card-img-top" alt="" /></a>
                             <div class="card-body"><span
                                     class="fs-6 fw-semibold d-block text-primary"><?= e($post['category']); ?></span>
