@@ -93,18 +93,18 @@ require_once __DIR__ . '/../includes/admin_header.php';
 
                         <div class="row">
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">Debut Mandat</label>
-                                <input type="number" name="mandate_start" class="form-control" value="<?= e($member['mandate_start'] ?? date('Y')); ?>" required>
+                                <label class="form-label">Début Mandat</label>
+                                <input type="text" name="mandate_start" class="form-control flatpickr" value="<?= e($member['mandate_start'] ?? date('Y')); ?>" placeholder="Année ou Date" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label class="form-label">Fin Mandat (Optionnel)</label>
-                                <input type="number" name="mandate_end" class="form-control" value="<?= e($member['mandate_end'] ?? ''); ?>">
+                                <label class="form-label">Fin Mandat</label>
+                                <input type="text" name="mandate_end" class="form-control flatpickr" value="<?= e($member['mandate_end'] ?? ''); ?>" placeholder="Année ou Date (laisser vide pour 'Présent')">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Ordre d'affichage</label>
-                            <input type="number" name="display_order" class="form-control" value="<?= e($member['display_order'] ?? 0); ?>">
+                            <input type="number" min="0" name="display_order" class="form-control" value="<?= e($member['display_order'] ?? 0); ?>">
                         </div>
 
                         <div class="mb-3">

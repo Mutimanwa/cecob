@@ -243,21 +243,78 @@ function slugify(string $text): string
     return empty($text) ? 'n-a' : $text;
 }
 
-function upload_file(array $file, string $targetDir): ?string
-{
-    if ($file['error'] !== UPLOAD_ERR_OK) {
+function upload_file(
+    array $file,
+    string $targetDir,
+    array $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'pdf'],
+    int $maxSize = 5 * 1024 * 1024
+): ?string {
+
+    // Vérification erreur upload
+    if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
         return null;
     }
 
-    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $filename = bin2hex(random_bytes(8)) . '.' . $extension;
-    $targetPath = rtrim($targetDir, '/') . '/' . $filename;
-
-    if (move_uploaded_file($file['tmp_name'], APP_ROOT . '/' . $targetPath)) {
-        return $targetPath;
+    // Vérification taille
+    if ($file['size'] > $maxSize) {
+        return null;
     }
 
-    return null;
+    // Extension
+    $extension = strtolower(
+        pathinfo($file['name'], PATHINFO_EXTENSION)
+    );
+
+    // Vérification extension
+    if (!in_array($extension, $allowedExtensions, true)) {
+        return null;
+    }
+
+    // Vérification MIME type
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+
+    $allowedMimeTypes = [
+        'image/jpeg',
+        'image/png',
+        'image/webp',
+        'application/pdf',
+    ];
+
+    if (!in_array($mimeType, $allowedMimeTypes, true)) {
+        return null;
+    }
+
+    // Création dossier (robuste)
+    $targetDir = trim($targetDir, '/\\');
+    $fullTargetDir = APP_ROOT . DIRECTORY_SEPARATOR . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $targetDir);
+
+    if (!is_dir($fullTargetDir)) {
+        if (!mkdir($fullTargetDir, 0755, true)) {
+            error_log("Failed to create directory: " . $fullTargetDir);
+            return null;
+        }
+    }
+
+    // Génération nom sécurisé
+    $filename = sprintf(
+        '%s_%s.%s',
+        time(),
+        bin2hex(random_bytes(8)),
+        $extension
+    );
+
+    $targetPath = trim($targetDir, '/') . '/' . $filename;
+
+    $destination = APP_ROOT . '/' . $targetPath;
+
+    // Déplacement fichier
+    if (!move_uploaded_file($file['tmp_name'], $destination)) {
+        return null;
+    }
+
+    return $targetPath;
 }
 
 // --- Team Management ---
@@ -272,6 +329,14 @@ function save_team_member(array $data): bool
 {
     if (! db()) return false;
     if (empty($data['full_name']) || empty($data['role_title'])) return false;
+
+    // Ensure non-null values for DB constraints
+    $data['bio'] = $data['bio'] ?? '';
+    $data['avatar_path'] = $data['avatar_path'] ?? null;
+    $data['mandate_start'] = $data['mandate_start'] ?: date('Y');
+    $data['mandate_end'] = $data['mandate_end'] ?: 'Présent';
+    $data['display_order'] = (int)($data['display_order'] ?? 0);
+    $data['is_active'] = (int)($data['is_active'] ?? 1);
 
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE team_members SET full_name = ?, role_title = ?, bio = ?, avatar_path = ?, mandate_start = ?, mandate_end = ?, display_order = ?, is_active = ? WHERE id = ?');

@@ -1,1 +1,1 @@
-const upload=new FileUploadWithPreview.FileUploadWithPreview("courseImage");
+const upload = new FileUploadWithPreview.FileUploadWithPreview("courseImage");

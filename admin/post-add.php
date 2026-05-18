@@ -86,12 +86,13 @@ require_once __DIR__ . '/../includes/admin_header.php';
             <h4 class="mb-0">Contenu de l'article</h4>
           </div>
           <div class="card-body">
-            <div class="mb-3">
+
+            <div class="mb-4">
               <label class="form-label">Image de couverture</label>
-              <div class="custom-file-container" data-upload-id="courseImage">
-                <label>Choisir une image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
-                <label class="custom-file-container__custom-file">
-                  <input type="file" name="image" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+              <div class="custom-file-container">
+                <label class="custom-file-container__custom-file icon-shape icon-xxl border rounded position-relative">
+                  <span class="position-absolute"><i class="bi bi-image fs-3"></i></span>
+                  <input type="file" name="image" class="form-control border-0 opacity-0 custom-file-container__custom-file__custom-file-input" accept="image/*">
                   <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
                   <span class="custom-file-container__custom-file__custom-file-control"></span>
                 </label>
@@ -160,7 +161,7 @@ require_once __DIR__ . '/../includes/admin_header.php';
   </form>
 </section>
 
-<!-- <script>
+<script>
   function prepareFormSubmission() {
     // Sync Quill content to hidden input
     const editor = document.querySelector('.ql-editor');
@@ -175,6 +176,6 @@ require_once __DIR__ . '/../includes/admin_header.php';
     bodyInput.value = editor.innerHTML;
     return true;
   }
-</script> -->
+</script>
 
 <?php require_once __DIR__ . '/../includes/admin_footer.php'; ?>
