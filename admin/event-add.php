@@ -109,15 +109,41 @@ require_once __DIR__ . '/../includes/admin_header.php';
             </div>
 
             <div class="col-12 mb-4">
-              <label class="form-label">Image de couverture</label>
-              <div class="custom-file-container" data-upload-id="courseImage">
-                <label>Choisir une image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Effacer">&times;</a></label>
-                <label class="custom-file-container__custom-file">
-                  <input type="file" name="image" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
-                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-                  <span class="custom-file-container__custom-file__custom-file-control"></span>
+
+              <label class="form-label">
+                Image de couverture
+              </label>
+
+              <div class="custom-file-container">
+
+                <!-- Upload Box -->
+                <label
+                  class="custom-file-container__custom-file icon-shape icon-xxl border rounded position-relative overflow-hidden cursor-pointer">
+
+                  <!-- Icon -->
+                  <span
+                    id="uploadIcon"
+                    class="position-absolute top-50 start-50 translate-middle">
+                    <i class="bi bi-image fs-3"></i>
+                  </span>
+
+                  <!-- Input -->
+                  <input
+                    type="file"
+                    name="image"
+                    id="imageInput"
+                    class="form-control border-0 opacity-0 position-relative z-3"
+                    accept="image/*">
+
+                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+
+                  <!-- Preview -->
+                  <img
+                    id="imagePreview"
+                    src=""
+                    alt="Preview"
+                    class="w-100 h-100 object-fit-cover d-none rounded">
                 </label>
-                <div class="custom-file-container__image-preview" style="<?= $event && $event['image_path'] ? 'background-image: url(' . e(app_url($event['image_path'])) . ');' : ''; ?>"></div>
               </div>
             </div>
 

@@ -9,16 +9,16 @@ require_once __DIR__ . '/includes/public_header.php';
         <div class="container my-lg-4">
 
             <div class="row">
-                <div class="offset-lg-2 col-lg-8 col-md-12 col-12 mb-8">
+                <div class="text-center col-12 mb-8">
 
                     <!-- caption-->
-                    <h1 class="display-2 fw-bold mb-3">
+                    <h1 class=" display-2 fw-bold mb-3">
                         Bienvenue à
                         <span class="text-primary">CECOB</span>
                     </h1>
 
                     <!-- para -->
-                    <p class="h2 mb-3">
+                    <p class="h2 mb-3 ">
                         Le Collectif des Étudiants Congolais au Burundi œuvre pour
                         l’unité, l’intégration et l’accompagnement des étudiants
                         congolais dans leur parcours académique et social.

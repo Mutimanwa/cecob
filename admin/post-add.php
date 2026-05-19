@@ -87,19 +87,43 @@ require_once __DIR__ . '/../includes/admin_header.php';
           </div>
           <div class="card-body">
 
-            <div class="mb-4">
-              <label class="form-label">Image de couverture</label>
+   <div class=" mb-4">
+              <label class="form-label">
+                Image de couverture
+              </label>
+
               <div class="custom-file-container">
-                <label class="custom-file-container__custom-file icon-shape icon-xxl border rounded position-relative">
-                  <span class="position-absolute"><i class="bi bi-image fs-3"></i></span>
-                  <input type="file" name="image" class="form-control border-0 opacity-0 custom-file-container__custom-file__custom-file-input" accept="image/*">
-                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-                  <span class="custom-file-container__custom-file__custom-file-control"></span>
+
+                <!-- Upload Box -->
+                <label
+                  class="custom-file-container__custom-file icon-shape icon-xxl border rounded position-relative overflow-hidden cursor-pointer">
+
+                  <!-- Icon -->
+                  <span
+                    id="uploadIcon"
+                    class="position-absolute top-50 start-50 translate-middle">
+                    <i class="bi bi-image fs-3"></i>
+                  </span>
+
+                  <!-- Input -->
+                  <input
+                    type="file"
+                    name="image"
+                    id="imageInput"
+                    class="form-control border-0 opacity-0 position-relative z-3"
+                    accept="image/*">
+
+                  <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+
+                  <!-- Preview -->
+                  <img
+                    id="imagePreview"
+                    src=""
+                    alt="Preview"
+                    class="w-100 h-100 object-fit-cover d-none rounded">
                 </label>
-                <div class="custom-file-container__image-preview" style="<?= $post && $post['image_path'] ? 'background-image: url(' . e(app_url($post['image_path'])) . ');' : ''; ?>"></div>
               </div>
             </div>
-
             <div class="row">
               <div class="mb-3 col-md-12">
                 <label for="postTitle" class="form-label">Titre <span class="text-danger">*</span></label>

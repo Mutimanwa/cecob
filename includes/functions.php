@@ -157,16 +157,12 @@ function fetch_upcoming_events(int $limit = 3, ?string $category = null): array
         return [];
     }
 
-    $query = "SELECT id, title, description, starts_at, location, capacity, image_path, category FROM events WHERE starts_at >= CURDATE()";
+    $query = "SELECT id, title, description, starts_at, location, capacity, image_path FROM events WHERE starts_at >= CURDATE()";
     $params = [];
 
-    if ($category) {
-        $query .= " AND category = ?";
-        $params[] = $category;
-    }
 
     $query .= " ORDER BY starts_at ASC LIMIT " . (int)$limit;
-    
+
     $stmt = db()->prepare($query);
     $stmt->execute($params);
     $items = fetch_all_assoc($stmt);
@@ -388,10 +384,51 @@ function save_partner(array $data): bool
 }
 
 // --- Posts & Events Management ---
+/**
+ * Processes HTML content to extract base64 images and save them as files.
+ */
+function process_content_images(string $content, string $subfolder = 'blog'): string
+{
+    if (empty($content)) return $content;
+
+    // Pattern to match base64 images: data:image/[type];base64,[data]
+    $pattern = '/src="data:image\/([^;]+);base64,([^"]+)"/';
+
+    return preg_replace_callback($pattern, function ($matches) use ($subfolder) {
+        $extension = $matches[1]; // e.g., png, jpeg, gif
+        $base64Data = $matches[2];
+
+        // Fix extension for jpeg
+        if ($extension === 'jpeg') $extension = 'jpg';
+
+        $bin = base64_decode($base64Data);
+        if (!$bin) return $matches[0]; // Failed to decode, keep as is
+
+        $filename = bin2hex(random_bytes(8)) . '.' . $extension;
+        $dir = __DIR__ . '/../uploads/' . $subfolder . '/';
+
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
+        $path = $dir . $filename;
+        if (file_put_contents($path, $bin)) {
+            // Return the absolute path relative to project root
+            $relativePath = 'uploads/' . $subfolder . '/' . $filename;
+            return 'src="' . app_url($relativePath) . '"';
+        }
+
+        return $matches[0]; // Failed to save, keep as is
+    }, $content);
+}
+
 function save_post(array $data): bool
 {
     if (! db()) return false;
     if (empty($data['title']) || empty($data['body']) || empty($data['excerpt']) || empty($data['category'])) return false;
+
+    // Process base64 images in content
+    $data['body'] = process_content_images($data['body'], 'blog');
 
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE posts SET title = ?, slug = ?, category = ?, excerpt = ?, body = ?, image_path = ?, status = ? WHERE id = ?');
@@ -405,6 +442,11 @@ function save_event(array $data): bool
 {
     if (! db()) return false;
     if (empty($data['title']) || empty($data['starts_at']) || empty($data['location'])) return false;
+
+    // Process base64 images in description if provided
+    if (isset($data['description'])) {
+        $data['description'] = process_content_images($data['description'], 'events');
+    }
 
     if (isset($data['id'])) {
         $stmt = db()->prepare('UPDATE events SET title = ?, description = ?, starts_at = ?, location = ?, capacity = ?, image_path = ? WHERE id = ?');

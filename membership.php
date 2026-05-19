@@ -76,7 +76,7 @@ require_once __DIR__ . '/includes/public_header.php';
                     </div>
                     <div class="col-md-6 mb-3">
                       <label class="form-label">Date de naissance <span class="text-danger">*</span></label>
-                      <input class="form-control" type="date" name="birth_date" value="<?= e(old('birth_date')); ?>" required />
+                      <input class="form-control flatpickr" type="date" name="birth_date" value="<?= e(old('birth_date')); ?>" required />
                     </div>
                     <div class="col-md-6 mb-3">
                       <label class="form-label">Nationalité <span class="text-danger">*</span></label>
@@ -187,4 +187,5 @@ require_once __DIR__ . '/includes/public_header.php';
   </section>
 </main>
 <?php clear_old_input();
-require_once __DIR__ . '/includes/public_footer.php'; ?>
+require_once __DIR__ . '/includes/public_footer.php'; 
+?>

@@ -13,13 +13,13 @@ $flash = get_flash();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/logo.png')) ?>" />
   <script src="../assets/js/vendors/darkMode.js"></script>
   <link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
   <link href="../assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
   <link href="../assets/js/vendors/simplebar/dist/simplebar.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/theme.min.css" />
-  <title>CECOB | Connexion admin</title>
+  <title>CECOB | Connexion</title>
 </head>
 
 <body>
@@ -30,8 +30,8 @@ $flash = get_flash();
           <div class="card shadow">
             <div class="card-body p-6 d-flex flex-column gap-4">
               <div>
-                <a href="../index.php"><img src="../assets/images/brand/logo/logo-icon.svg" class="mb-4" alt="logo-icon" /></a>
-                <h1 class="mb-0 fw-bold">Connexion admin CECOB</h1>
+                <a href="../index.php"><img src="<?= e(app_url('assets/images/logo.png')) ?>" class="mb-4-auto" alt="logo-icon" width="100" /></a>
+                <h1 class="mb-0 fw-bold">Connexion </h1>
               </div>
               <?php if ($flash): ?><div class="alert alert-<?= e($flash['type']); ?> mb-0"><?= e($flash['message']); ?></div><?php endif; ?>
               <form method="post" action="login_submit.php">

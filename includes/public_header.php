@@ -9,7 +9,7 @@ $flash = get_flash();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/favicon/favicon.ico')); ?>" />
+  <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/logo.png')); ?>" />
   <script src="<?= e(app_url('assets/js/vendors/darkMode.js')); ?>"></script>
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
@@ -39,14 +39,14 @@ $flash = get_flash();
                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
                   aria-pressed="false">
                   <i class="bi theme-icon bi-sun-fill"></i>
-                  <span class="ms-2">Light</span>
+                  <span class="ms-2">Clair</span>
                 </button>
               </li>
               <li>
                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
                   aria-pressed="false">
                   <i class="bi theme-icon bi-moon-stars-fill"></i>
-                  <span class="ms-2">Dark</span>
+                  <span class="ms-2">Sombre</span>
                 </button>
               </li>
               <li>
@@ -59,7 +59,7 @@ $flash = get_flash();
             </ul>
           </div>
           <div class="d-none d-md-block me-2">
-            <a href="<?= e(app_url('membership.php')); ?>" class="btn btn-primary">Adhesion</a>
+            <a href="<?= e(app_url('membership.php')); ?>" class="btn btn-primary <?= $currentPage === 'adhesion'; ?>">Adhesion</a>
           </div>
         </div>
         <div>

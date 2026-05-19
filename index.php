@@ -5,6 +5,7 @@ $pageTitle = 'CECOB | Accueil';
 $currentPage = 'home';
 $posts = fetch_latest_posts();
 $events = fetch_upcoming_events();
+$teams = fetch_all_team();
 
 require_once __DIR__ . '/includes/public_header.php';
 ?>
@@ -171,9 +172,12 @@ require_once __DIR__ . '/includes/public_header.php';
         <!-- la liste des evenements -->
         <?php foreach ($events as $event): ?>
           <div class="col-lg-4 col-md-6 col-12">
-            <div class="card h-100">
-              <img src="<?= e($event['image_path'] ?: 'uploads/events/blogpost-1.jpg'); ?>"
+            <div class="card h-100 ">
+              <div class="overflow-hidden " style="max-height: 250px;">
+                <img src="<?= e($event['image_path'] ?: 'uploads/events/blogpost-1.jpg'); ?>"
                 class="card-img-top" alt="<?= e($event['title']); ?>" />
+              </div>
+              
               <div class="card-body">
                 <span
                   class="badge bg-primary-subtle text-primary"><?= e(date('d M Y', strtotime($event['starts_at']))); ?></span>
@@ -255,29 +259,27 @@ require_once __DIR__ . '/includes/public_header.php';
 
       <!-- row -->
       <div class="row gx-3">
-
+      <?php foreach($teams as $team) : ?>
         <!-- Leader Card -->
         <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-
           <div class="card border-0 shadow-sm h-100">
-
             <!-- Card body -->
             <div class="card-body d-flex flex-column gap-4">
 
               <div class="text-center d-flex flex-column align-items-center gap-3">
 
                 <img
-                  src="assets/images/avatar/avatar-11.jpg"
+                  src="<?= e($team['avatar_path']) ; ?>"
                   class="rounded-circle avatar-xl object-fit-cover"
-                  alt="Président CECOB">
+                  alt="<?= e($team['role_title']) ; ?>">
 
                 <div>
                   <h4 class="mb-0">
-                    Jean Mukendi
+                    <?= e($team['full_name']) ; ?>
                   </h4>
 
                   <p class="mb-0 text-muted">
-                    Président du CECOB
+                    <?= e($team['role_title'] ?? 'Non définie' ) ; ?>
                   </p>
                 </div>
 
@@ -297,16 +299,12 @@ require_once __DIR__ . '/includes/public_header.php';
                   <span>Université</span>
 
                   <span class="text-dark fw-semibold">
-                    Université du Burundi
+                    <?= e($team['role_title']) ; ?>
                   </span>
                 </div>
 
                 <div class="d-flex justify-content-between pt-2">
-                  <span>Responsabilité</span>
-
-                  <span class="text-dark fw-semibold">
-                    Coordination générale
-                  </span>
+                 <p> <?= e(substr($team['bio'] ,0 ,60)) ; ?></p>
                 </div>
 
               </div>
@@ -314,180 +312,7 @@ require_once __DIR__ . '/includes/public_header.php';
             </div>
           </div>
         </div>
-
-        <!-- Leader Card -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-
-          <div class="card border-0 shadow-sm h-100">
-
-            <div class="card-body d-flex flex-column gap-4">
-
-              <div class="text-center d-flex flex-column align-items-center gap-3">
-
-                <img
-                  src="assets/images/avatar/avatar-12.jpg"
-                  class="rounded-circle avatar-xl object-fit-cover"
-                  alt="Vice-président">
-
-                <div>
-                  <h4 class="mb-0">
-                    Grâce Kabeya
-                  </h4>
-
-                  <p class="mb-0 text-muted">
-                    Vice-présidente
-                  </p>
-                </div>
-
-              </div>
-
-              <div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Mandat</span>
-
-                  <span class="text-dark fw-semibold">
-                    2025 - 2026
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Université</span>
-
-                  <span class="text-dark fw-semibold">
-                    Université Espoir d’Afrique
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between pt-2">
-                  <span>Responsabilité</span>
-
-                  <span class="text-dark fw-semibold">
-                    Relations étudiantes
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Leader Card -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-
-          <div class="card border-0 shadow-sm h-100">
-
-            <div class="card-body d-flex flex-column gap-4">
-
-              <div class="text-center d-flex flex-column align-items-center gap-3">
-
-                <img
-                  src="assets/images/avatar/avatar-13.jpg"
-                  class="rounded-circle avatar-xl object-fit-cover"
-                  alt="Secrétaire">
-
-                <div>
-                  <h4 class="mb-0">
-                    Patrick Ilunga
-                  </h4>
-
-                  <p class="mb-0 text-muted">
-                    Secrétaire général
-                  </p>
-                </div>
-
-              </div>
-
-              <div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Mandat</span>
-
-                  <span class="text-dark fw-semibold">
-                    2025 - 2026
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Université</span>
-
-                  <span class="text-dark fw-semibold">
-                    Université Lumière
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between pt-2">
-                  <span>Responsabilité</span>
-
-                  <span class="text-dark fw-semibold">
-                    Administration
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Leader Card -->
-        <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-
-          <div class="card border-0 shadow-sm h-100">
-
-            <div class="card-body d-flex flex-column gap-4">
-
-              <div class="text-center d-flex flex-column align-items-center gap-3">
-
-                <img
-                  src="assets/images/avatar/avatar-14.jpg"
-                  class="rounded-circle avatar-xl object-fit-cover"
-                  alt="Trésorier">
-
-                <div>
-                  <h4 class="mb-0">
-                    Daniel Kasongo
-                  </h4>
-
-                  <p class="mb-0 text-muted">
-                    Trésorier
-                  </p>
-                </div>
-
-              </div>
-
-              <div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Mandat</span>
-
-                  <span class="text-dark fw-semibold">
-                    2025 - 2026
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between border-bottom py-2">
-                  <span>Université</span>
-
-                  <span class="text-dark fw-semibold">
-                    Université du Lac Tanganyika
-                  </span>
-                </div>
-
-                <div class="d-flex justify-content-between pt-2">
-                  <span>Responsabilité</span>
-
-                  <span class="text-dark fw-semibold">
-                    Gestion financière
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
+      <?php endforeach ; ?>
 
       </div>
     </div>

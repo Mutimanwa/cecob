@@ -4,11 +4,11 @@ $pageTitle = 'CECOB | Événements & Activités';
 $currentPage = 'events';
 
 // Filter by category
-$activeCategory = $_GET['category'] ?? null;
-$events = fetch_upcoming_events(12, $activeCategory);
+// $activeCategory = $_GET['category'] ?? null;
+$events = fetch_upcoming_events(12);
 
 // Fetch categories for tabs
-$allCategories = fetch_all_assoc(db()->query("SELECT DISTINCT category FROM events WHERE starts_at >= CURDATE()"));
+// $allCategories = fetch_all_assoc(db()->query("SELECT DISTINCT category FROM events WHERE starts_at >= CURDATE()"));
 
 require_once __DIR__ . '/includes/public_header.php';
 ?>
@@ -23,20 +23,6 @@ require_once __DIR__ . '/includes/public_header.php';
 
     <section class="py-7">
         <div class="container">
-            <!-- Category Tabs -->
-            <ul class="nav nav-line-bottom mb-6 justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link <?= !$activeCategory ? 'active' : ''; ?>" href="events.php">Tout l'agenda</a>
-                </li>
-                <?php foreach ($allCategories as $cat): ?>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $activeCategory === $cat['category'] ? 'active' : ''; ?>"
-                            href="events.php?category=<?= urlencode($cat['category']); ?>">
-                            <?= e($cat['category']); ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
 
             <div class="row g-4">
                 <?php if (empty($events)): ?>
@@ -65,12 +51,12 @@ require_once __DIR__ . '/includes/public_header.php';
                                     </div>
                                     <p class="text-muted mb-0 small text-truncate-3"><?= e($event['description']); ?></p>
                                 </div>
-                                <div class="card-footer bg-white border-top-0 pt-0 pb-4">
+                                <div class="card-footer bg-white border-top-0 pt-0 pb-2">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="small text-muted">
                                             <i class="fe fe-users me-1"></i> <?= (int)$event['capacity'] > 0 ? (int)$event['capacity'] . ' places' : 'Accès libre'; ?>
                                         </span>
-                                        <a href="events.php" class="btn btn-sm btn-outline-primary">Détails</a>
+                                        <a href="events.php" class="btn btn-sm btn-outline-primary mt-3">Détails</a>
                                     </div>
                                 </div>
                             </div>

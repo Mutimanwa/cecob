@@ -10,7 +10,7 @@ $user = current_user();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/favicon/favicon.ico')); ?>" />
+  <link rel="shortcut icon" type="image/x-icon" href="<?= e(app_url('assets/images/logo.png')); ?>" />
   <script src="<?= e(app_url('assets/js/vendors/darkMode.js')); ?>"></script>
   <link href="<?= e(app_url('assets/fonts/feather/feather.css')); ?>" rel="stylesheet" />
   <link href="<?= e(app_url('assets/js/vendors/bootstrap-icons/font/bootstrap-icons.min.css')); ?>" rel="stylesheet" />
@@ -18,6 +18,7 @@ $user = current_user();
   <link rel="stylesheet" href="<?= e(app_url('assets/js/vendors/flatpickr/dist/flatpickr.min.css')); ?>" />
   <link rel="stylesheet" href="<?= e(app_url('assets/js/vendors/quill/dist/quill.snow.css')); ?>" />
   <link rel="stylesheet" href="<?= e(app_url('assets/css/theme.min.css')); ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/custom.css')); ?>" />
   <title><?= e($pageTitle); ?></title>
 </head>
 
@@ -25,7 +26,7 @@ $user = current_user();
   <div id="db-wrapper">
     <nav class="navbar-vertical navbar">
       <div class="vh-100" data-simplebar>
-        <a class="navbar-brand" href="<?= e(app_url('index.php')); ?>"><img src="<?= e(app_url('assets/images/brand/logo/logo-inverse.svg')); ?>" alt="CECOB" /></a>
+        <a class="navbar-brand" href="<?= e(app_url('index.php')); ?>"><img src="<?= e(app_url('assets/images/logo.png')); ?>" alt="CECOB" /></a>
         <ul class="navbar-nav flex-column">
           <li class="nav-item"><a class="nav-link <?= $adminPage === 'dashboard' ? 'active' : ''; ?>" href="<?= e(app_url('admin/dashboard.php')); ?>"><i class="nav-icon fe fe-home me-2"></i>Dashboard</a></li>
           <li class="nav-item nav-divider my-2"></li>
